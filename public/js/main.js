@@ -101,37 +101,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 5. Firecracker Burst Effect on Click
+    // 5. Disney-Style Firework Burst Effect
     function createBurst(x, y) {
-        const particleCount = 30; // Explosion size
+        const particleCount = 60; // Increased particle count
+        // Vibrant colors suitable for fireworks
+        const fireworkColors = ['#ff0000', '#ffd700', '#ff69b4', '#00ff00', '#00ffff', '#ffffff'];
 
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
             particle.classList.add('burst');
 
-            const size = Math.random() * 6 + 2;
-            const color = colors[Math.floor(Math.random() * colors.length)];
+            const size = Math.random() * 8 + 4; // Larger particles
+            const color = fireworkColors[Math.floor(Math.random() * fireworkColors.length)];
 
             particle.style.left = `${x}px`;
             particle.style.top = `${y}px`;
             particle.style.width = `${size}px`;
             particle.style.height = `${size}px`;
             particle.style.background = color;
-            particle.style.boxShadow = `0 0 ${size * 2}px ${color}`;
+            particle.style.boxShadow = `0 0 ${size * 4}px ${color}, 0 0 ${size * 2}px #fff`; // Stronger glow
 
-            // Random angle and distance
+            // Explosion physics
             const angle = Math.random() * Math.PI * 2;
-            const velocity = Math.random() * 100 + 50; // Burst radius
+            const velocity = Math.random() * 200 + 100; // Much wider spread (Disney style!)
 
             const destX = Math.cos(angle) * velocity;
             const destY = Math.sin(angle) * velocity;
+
+            // Adding gravity effect variable (optional, dealt with in CSS usually but let's keep it simple radial)
 
             particle.style.setProperty('--dest-x', `${destX}px`);
             particle.style.setProperty('--dest-y', `${destY}px`);
 
             document.body.appendChild(particle);
 
-            setTimeout(() => particle.remove(), 500);
+            setTimeout(() => particle.remove(), 800); // Longer duration
         }
     }
 
