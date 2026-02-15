@@ -26,12 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
 
-            // Calculate rotation
-            // Center of card is (rect.width/2, rect.height/2)
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-
-            // Max rotation degrees
             const maxRotate = 10;
 
             const rotateX = ((y - centerY) / centerY) * -maxRotate;
@@ -68,29 +64,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Cursor Sparkle Effect
+    // 4. Cursor Sparkle Effect (Quadrupled Intensity)
     const colors = ['#6C63FF', '#fca311', '#ffffff', '#3b82f6'];
 
-    document.addEventListener('mousemove', (e) => {
-        // Create sparkle particle
+    function createSparkle(x, y) {
         const sparkle = document.createElement('div');
         sparkle.classList.add('sparkle');
 
-        // Random properties
-        const x = e.clientX;
-        const y = e.clientY;
-        const size = Math.random() * 5 + 2; // 2px to 7px
+        const size = Math.random() * 5 + 2;
         const color = colors[Math.floor(Math.random() * colors.length)];
 
-        // Set styles
         sparkle.style.left = `${x}px`;
         sparkle.style.top = `${y}px`;
         sparkle.style.width = `${size}px`;
         sparkle.style.height = `${size}px`;
         sparkle.style.background = color;
-        sparkle.style.boxShadow = `0 0 ${size * 2}px ${color}, 0 0 ${size * 4}px ${color}`; // Glow effect
+        sparkle.style.boxShadow = `0 0 ${size * 2}px ${color}, 0 0 ${size * 4}px ${color}`;
 
-        // Random movement direction
         const destX = (Math.random() - 0.5) * 50;
         const destY = (Math.random() - 0.5) * 50;
         sparkle.style.setProperty('--dest-x', `${destX}px`);
@@ -98,9 +88,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.body.appendChild(sparkle);
 
-        // Remove after animation
-        setTimeout(() => {
-            sparkle.remove();
-        }, 1000);
+        setTimeout(() => sparkle.remove(), 1000);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+        // Quadruple sparkles: Create 4 sparkles per event
+        for (let i = 0; i < 4; i++) {
+            // Add slight random offset so they don't stack perfectly
+            const offsetX = (Math.random() - 0.5) * 10;
+            const offsetY = (Math.random() - 0.5) * 10;
+            createSparkle(e.clientX + offsetX, e.clientY + offsetY);
+        }
     });
+
+    // 5. Firecracker Burst Effect on Click
+    function createBurst(x, y) {
+        const particleCount = 30; // Explosion size
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('burst');
+
+            const size = Math.random() * 6 + 2;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.background = color;
+            particle.style.boxShadow = `0 0 ${size * 2}px ${color}`;
+
+            // Random angle and distance
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = Math.random() * 100 + 50; // Burst radius
+
+            const destX = Math.cos(angle) * velocity;
+            const destY = Math.sin(angle) * velocity;
+
+            particle.style.setProperty('--dest-x', `${destX}px`);
+            particle.style.setProperty('--dest-y', `${destY}px`);
+
+            document.body.appendChild(particle);
+
+            setTimeout(() => particle.remove(), 500);
+        }
+    }
+
+    // Attach to all clicks (can restrict to buttons if desired, but "everytime a button... clicked" usually implies interactive feedback)
+    // Let's attach specifically to links and buttons as requested
+    const clickables = document.querySelectorAll('a, button, .btn');
+    clickables.forEach(el => {
+        el.addEventListener('click', (e) => {
+            // Use e.clientX/Y if available, otherwise get element center
+            const x = e.clientX || el.getBoundingClientRect().left + el.offsetWidth / 2;
+            const y = e.clientY || el.getBoundingClientRect().top + el.offsetHeight / 2;
+            createBurst(x, y);
+        });
+    });
+
+    // Also allow clicking anywhere for fun? User specifically said "button like home, about etc"
+    // I'll stick to the specific listener above, but maybe add a global one for testing feels nice.
+    // Let's stick to the prompt: "everytime a button like home, about etc clicked"
 });
