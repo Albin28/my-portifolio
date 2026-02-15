@@ -597,7 +597,8 @@ footer {
     border-radius: 50%;
     pointer-events: none;
     z-index: 10000;
-    animation: burst-anim 0.5s ease-out forwards;
+    animation: burst-anim 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    /* Ease-out for explosion feel */
     --dest-x: 0px;
     --dest-y: 0px;
 }
@@ -610,6 +611,6 @@ footer {
 
     100% {
         opacity: 0;
-        transform: translate(var(--dest-x), var(--dest-y)) scale(0.5);
+        transform: translate(var(--dest-x), var(--dest-y)) scale(0.2);
     }
 }
