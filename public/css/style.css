@@ -568,3 +568,26 @@ footer {
         height: 250px;
     }
 }
+
+/* Sparkle Effect */
+.sparkle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: sparkle-anim-unique 1s linear forwards;
+    --dest-x: 0px;
+    --dest-y: 0px;
+}
+
+@keyframes sparkle-anim-unique {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(var(--dest-x), var(--dest-y)) scale(0);
+    }
+}

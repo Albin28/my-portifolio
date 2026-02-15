@@ -67,4 +67,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // 4. Cursor Sparkle Effect
+    const colors = ['#6C63FF', '#fca311', '#ffffff', '#3b82f6'];
+
+    document.addEventListener('mousemove', (e) => {
+        // Create sparkle particle
+        const sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+
+        // Random properties
+        const x = e.clientX;
+        const y = e.clientY;
+        const size = Math.random() * 5 + 2; // 2px to 7px
+        const color = colors[Math.floor(Math.random() * colors.length)];
+
+        // Set styles
+        sparkle.style.left = `${x}px`;
+        sparkle.style.top = `${y}px`;
+        sparkle.style.width = `${size}px`;
+        sparkle.style.height = `${size}px`;
+        sparkle.style.background = color;
+        sparkle.style.boxShadow = `0 0 ${size * 2}px ${color}, 0 0 ${size * 4}px ${color}`; // Glow effect
+
+        // Random movement direction
+        const destX = (Math.random() - 0.5) * 50;
+        const destY = (Math.random() - 0.5) * 50;
+        sparkle.style.setProperty('--dest-x', `${destX}px`);
+        sparkle.style.setProperty('--dest-y', `${destY}px`);
+
+        document.body.appendChild(sparkle);
+
+        // Remove after animation
+        setTimeout(() => {
+            sparkle.remove();
+        }, 1000);
+    });
 });
