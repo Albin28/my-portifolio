@@ -13,10 +13,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 const pages = ['index', 'about', 'projects', 'contact'];
 
 pages.forEach(page => {
-    app.get(page === 'index' ? '/' : `/${page}`, (req, res) => {
-        res.render(page, { 
+    // Handle root, /page, and /page.html
+    const routes = page === 'index' ? ['/', '/index.html'] : [`/${page}`, `/${page}.html`];
+
+    app.get(routes, (req, res) => {
+        res.render(page, {
             title: page.charAt(0).toUpperCase() + page.slice(1) || 'Home',
-            currentPage: page 
+            currentPage: page
         });
     });
 });
