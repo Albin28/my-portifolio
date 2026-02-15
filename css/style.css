@@ -591,3 +591,25 @@ footer {
         transform: translate(var(--dest-x), var(--dest-y)) scale(0);
     }
 }
+
+.burst {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    animation: burst-anim 0.5s ease-out forwards;
+    --dest-x: 0px;
+    --dest-y: 0px;
+}
+
+@keyframes burst-anim {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(var(--dest-x), var(--dest-y)) scale(0.5);
+    }
+}
