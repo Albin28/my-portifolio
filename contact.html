@@ -27,6 +27,11 @@
             <li><a href="about.html" class="">About</a></li>
             <li><a href="projects.html" class="">Projects</a></li>
             <li><a href="contact.html" class="active">Contact</a></li>
+            <li>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </li>
         </ul>
         <div class="hamburger">
             <i class="fas fa-bars"></i>
@@ -36,26 +41,40 @@
 
     <section class="contact-section">
         <h2>Get In Touch</h2>
-        <p class="contact-intro">Feel free to reach out for collaborations or just a friendly hello!</p>
-
         <div class="contact-container">
+            <div class="contact-actions">
+                <p>Have a question or want to work together?</p>
+
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="width: 100%; text-align: left;">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required
+                            placeholder="Your message here..."></textarea>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn primary">Send Message</button>
+                    </div>
+                </form>
+
+            </div>
+
             <div class="contact-info">
                 <div class="info-item">
                     <i class="fas fa-envelope"></i>
-                    <span>albin.joseph@example.com</span>
+                    <span>albin@example.com</span>
                 </div>
                 <div class="info-item">
                     <i class="fas fa-map-marker-alt"></i>
-                    <span>Kanjirapally, Kottayam</span>
+                    <span>Kerala, India</span>
                 </div>
-            </div>
-
-            <!-- Direct Email Link (No Sign-up required) -->
-            <div class="contact-actions">
-                <p>I'd love to hear from you! send me an email directly:</p>
-                <a href="mailto:albin.joseph@example.com" class="btn primary">
-                    <i class="fas fa-paper-plane"></i> Send Email
-                </a>
             </div>
         </div>
     </section>
@@ -72,6 +91,8 @@
     </div>
 </footer>
 <script src="js/main.js"></script>
+<script src="js/background.js"></script>
+<script src="js/theme.js"></script>
 </body>
 
 </html>

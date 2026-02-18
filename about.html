@@ -27,6 +27,11 @@
             <li><a href="about.html" class="active">About</a></li>
             <li><a href="projects.html" class="">Projects</a></li>
             <li><a href="contact.html" class="">Contact</a></li>
+            <li>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </li>
         </ul>
         <div class="hamburger">
             <i class="fas fa-bars"></i>
@@ -37,33 +42,58 @@
     <section class="about-section">
         <h2>About Me</h2>
         <div class="about-container">
-            <div class="about-text">
-                <h3>Who I Am</h3>
-                <p>
-                    I am a 6th-semester Computer Science and Engineering student with a keen interest in software
-                    development and operations.
-                    My journey involves learning new technologies, solving problems, and optimizing workflows.
-                </p>
+            <p>
+                I am Albin Joseph, a Computer Science Engineering student offering a strong foundation in software
+                development and DevOps practices.
+                I am currently honing my skills as a DevOps Intern at Nest Digital, where I work on building scalable
+                infrastructure and automating workflows.
+            </p>
+            <br>
+            <p>
+                My passion lies in bridging the gap between development and operations, ensuring that code is not only
+                clean but also deployable and maintainable.
+            </p>
 
-                <h3>Education</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <h4>B.Tech in CSE</h4>
-                        <p>Current (6th Sem) - Expected 2026</p>
-                    </div>
-                    <!-- Add more if needed -->
-                </div>
-
-                <h3>Skills</h3>
+            <div style="margin-top: 2rem;">
+                <h3><i class="fas fa-code"></i> Technical Skills</h3>
                 <div class="skills-grid">
-                    <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">DevOps</span>
-                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">C / C++</span>
                     <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">Git/GitHub</span>
-                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">HTML5 & CSS3</span>
+                    <span class="skill-tag">EJS</span>
+                    <span class="skill-tag">Git & GitHub</span>
+                    <span class="skill-tag">DevOps Concepts</span>
                 </div>
             </div>
+
+            <div style="margin-top: 2rem;">
+                <h3><i class="fas fa-briefcase"></i> Experience</h3>
+                <div style="margin-top: 1rem;">
+                    <div class="info-item">
+                        <i class="fas fa-building"></i>
+                        <div>
+                            <strong>DevOps Intern</strong><br>
+                            <span style="font-size: 0.9rem; color: var(--text-muted);">Nest Digital | Present</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+                <div style="margin-top: 1rem;">
+                    <div class="info-item">
+                        <i class="fas fa-university"></i>
+                        <div>
+                            <strong>B.Tech in Computer Science & Engineering</strong><br>
+                            <span style="font-size: 0.9rem; color: var(--text-muted);">Amal Jyothi College of
+                                Engineering</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -79,6 +109,8 @@
     </div>
 </footer>
 <script src="js/main.js"></script>
+<script src="js/background.js"></script>
+<script src="js/theme.js"></script>
 </body>
 
 </html>
